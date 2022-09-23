@@ -1,0 +1,50 @@
+{
+  "headerTitleMyShop": "Мой магазин",
+  "addButton": "Добавить",
+  "currency": "грн",
+  "buttonPay": "Оплатить",
+  "totalText": "Итого",
+  "bottomTab": {
+    "buttonBottomMenu": "Меню",
+    "buttonBottomSetting": "Настройки",
+    "buttonBottomBasket": "Корзина"
+  },
+  "home": {
+    "data": [
+      {
+        "id": 1,
+        "name": "Пастила яблочная",
+        "description": "Пастила сдалана из натуральных ингредиентов",
+        "price": 200
+      },
+      {
+        "id": 2,
+        "name": "Пастила клубничная",
+        "description": "Пастила сдалана из натуральных ингредиентов",
+        "price": 200
+      },
+      {
+        "id": 3,
+        "name": "Пастила малиновая",
+        "description": "Пастила сдалана из натуральных ингредиентов",
+        "price": 200
+      },
+      {
+        "id": 4,
+        "name": "Пастила с грушей",
+        "description": "Пастила сдалана из натуральных ингредиентов",
+        "price": 200
+      },
+      {
+        "id": 5,
+        "name": "Item1",
+        "description": ""
+      },
+      {
+        "id": 6,
+        "name": "Item1",
+        "description": ""
+      }
+    ]
+  }
+}

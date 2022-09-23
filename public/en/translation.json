@@ -1,0 +1,50 @@
+{
+  "headerTitleMyShop": "My shop",
+  "addButton": "Add",
+  "currency": "UAH",
+  "buttonPay": "Pay",
+  "totalText": "Total",
+  "bottomTab": {
+    "buttonBottomMenu": "Menu",
+    "buttonBottomSetting": "Settings",
+    "buttonBottomBasket": "Basket"
+  },
+  "home": {
+    "data": [
+      {
+        "id": 1,
+        "name": "Pastila apple",
+        "description": "Pasta made from natural ingredients",
+        "price": 200
+      },
+      {
+        "id": 2,
+        "name": "Pastila strawberry",
+        "description": "Pasta made from natural ingredients",
+        "price": 200
+      },
+      {
+        "id": 3,
+        "name": "Pastila raspberry",
+        "description": "Pasta made from natural ingredients",
+        "price": 200
+      },
+      {
+        "id": 4,
+        "name": "Item1",
+        "description": "",
+        "price": 200
+      },
+      {
+        "id": 5,
+        "name": "Item1",
+        "description": ""
+      },
+      {
+        "id": 6,
+        "name": "Item1",
+        "description": ""
+      }
+    ]
+  }
+}
