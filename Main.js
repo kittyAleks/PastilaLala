@@ -8,8 +8,7 @@ import {AuthStack} from "./src/navigation/AuthStack";
 import {TYPE_SCREEN} from "./src/store/constans";
 import {RootStack} from "./src/navigation/RootStack";
 import {changeLanguage} from "i18next";
-import {notificationListener, requestUserPermission} from "./src/config/notification";
-import firebase from "@react-native-firebase/app";
+import { createChannel, notificationListener, requestUserPermission } from "./src/config/notification";
 
 export const Main = () => {
   const _default = useSelector((state) => state.type_screen);
@@ -25,24 +24,11 @@ export const Main = () => {
   //   console.log("WWcurrentLang", currentLang);
   //   changeLanguage(currentLang);
   // }, [])
-  // const getPushData = (message) => {
-  //   console.log("QQQmessage", message);
-  // };
-  // messaging().onMessage(getPushData);
 
-  // const getTokenNotific = async () => {
-  //   const token_notification = await get_notific_token()
-  //   console.log("QQQtoken_notification", token_notification);
-  //
-  //   if(!token_notification) {
-  //     const token = await messaging().getToken();
-  //     console.log("QQQtoken", token);
-  //     save_notific_token(token)
-  //   }
-  // };
   useEffect(() => {
     requestUserPermission();
     notificationListener();
+    createChannel();
   }, []);
 
   const getToken = async () => {

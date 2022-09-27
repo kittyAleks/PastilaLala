@@ -1,10 +1,11 @@
 import React from "react";
 import { Platform } from "react-native";
+import firebase from "@react-native-firebase/app";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAct4KbftSEWXxx3ni8ezzqYLstd7h5IZ8",
   authDomain: "pastilalala-4e50b.firebaseapp.com",
-  // databaseURL: "https://myapp-project-123.firebaseio.com",
+  // databaseURL: "https://pastilalala-4e50b.firebaseio.com",
   projectId: "pastilalala-4e50b",
   storageBucket: "pastilalala-4e50b.appspot.com",
   messagingSenderId: "1042149263206",

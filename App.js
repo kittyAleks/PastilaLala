@@ -13,18 +13,15 @@ import firebase from "@react-native-firebase/app";
 import { PersistGate } from "redux-persist/integration/react";
 import store, { persistor } from "./src/store/configureStore";
 import { Main } from "./Main";
-import { firebaseConfig } from "./src/config/firebaseSettings";
-
-firebase.initializeApp(firebaseConfig);
 
 export default function App() {
   return (
     // <I18nextProvider i18n={i18n}>
-      <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <Main />
-        </PersistGate>
-      </Provider>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <Main />
+      </PersistGate>
+    </Provider>
     // </I18nextProvider>
   );
 }

@@ -11,7 +11,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-//   FirebaseApp.initializeApp(this);
     return "PastilaLala";
   }
   /**
