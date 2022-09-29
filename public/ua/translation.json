@@ -9,44 +9,17 @@
     "buttonBottomSetting": "Налаштування",
     "buttonBottomBasket": "Кошик"
   },
-  "home": {
-    "data": [
-      {
-        "id": 1,
-        "name": "Пастила яблучна",
-        "description": "Пастила із натуральних інгредієнтів",
-        "price": 200
-      },
-      {
-        "id": 2,
-        "name": "Пастила полунична",
-        "description": "Пастила із натуральних інгредієнтів",
-        "price": 200
-      },
-      {
-        "id": 3,
-        "name": "Пастила малинова",
-        "description": "Пастила із натуральних інгредієнтів",
-        "price": 200
-      },
-      {
-        "id": 4,
-        "name": "Item1",
-        "description": "",
-        "price": 200
-      },
-      {
-        "id": 5,
-        "name": "Item1",
-        "description": "",
-        "price": 200
-      },
-      {
-        "id": 6,
-        "name": "Item1",
-        "description": ""
-      }
-    ]
+  "loginRegButton" : {
+    "login": "Вхід",
+    "signUp": "Реєстрація",
+    "welcome": "Вітаємо!"
+  },
+  "loginRegScreen": {
+    "welcomeBack": "З поверненням",
+    "loginText": "Увійдіть в свій обліковий запис",
+    "nickName": "імʼя",
+    "email": "імейл",
+    "password": "пароль",
+    "createAccount": "Створити акаунт"
   }
-
 }

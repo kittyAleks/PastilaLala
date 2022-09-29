@@ -18,7 +18,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import flag_en from "../assets/flag_en.png";
 import flag_ukraine from "../assets/flag_ukraine.png";
 import {useTranslation} from "react-i18next";
-// import i18next, {changeLanguage} from "i18next";
+import i18next, {changeLanguage} from "i18next";
 import {get_language, save_language} from "../config/storage";
 
 const defaultOptions = {
@@ -124,17 +124,17 @@ export const RootStack = () => {
 const BottomTab = createBottomTabNavigator();
 
 const AllTabNavigation = () => {
-  // const {t} = useTranslation()
+  const {t} = useTranslation()
   const productsCart = useSelector(state => state.cart);
   const [product, setProduct] = useState([]);
-  const [language, setLanguage] = useState('ru');
+  const [language, setLanguage] = useState('uk');
   useEffect(() => {
     if (productsCart.length !== null) {
       return setProduct(productsCart.length);
     }
   });
   useEffect(() => {
-    // i18next.changeLanguage(language)
+    i18next.changeLanguage(language)
     save_language(language)
   }, [language])
 
@@ -165,8 +165,7 @@ const AllTabNavigation = () => {
       }
     }}>
     <BottomTab.Screen
-      // name={t('bottomTab.buttonBottomMenu')}
-      name={'buttonBottomMenu'}
+      name={t('bottomTab.buttonBottomMenu')}
       component={HomeScreen}
       options={{
         headerStyle: {backgroundColor: '#ec5e4e'},
@@ -206,9 +205,8 @@ const AllTabNavigation = () => {
           <Ionicons name="settings" color={mainColors.buttonBasket} size={30}/>
         ),
       }}
-      // name={t('bottomTab.buttonBottomSetting')}
-      name={'buttonBottomSetting'}
-      component={SettingsScreen}/>
+      name={t('bottomTab.buttonBottomSetting')}
+ъ      component={SettingsScreen}/>
     <BottomTab.Screen
       options={{
         tabBarBadge: !product ? null : product,
@@ -218,8 +216,7 @@ const AllTabNavigation = () => {
           <MaterialIcons name="shopping-basket" color={mainColors.buttonBasket} size={30}/>
         ),
       }}
-      // name={t("bottomTab.buttonBottomBasket")}
-      name={'buttonBottomBasket'}
+      name={t("bottomTab.buttonBottomBasket")}
       component={BasketScreen}/>
   </BottomTab.Navigator>;
 };

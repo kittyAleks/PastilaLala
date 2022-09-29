@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { StyleSheet, Text, FlatList, SafeAreaView } from "react-native";
+import { StyleSheet, Text, FlatList, SafeAreaView, Platform } from "react-native";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,23 +8,47 @@ import { MainProductList } from "./components/MainProductList";
 // import { NativeBaseProvider } from "native-base/src/core/NativeBaseProvider";
 import { getProducts } from "../store/actions";
 import { useTranslation } from "react-i18next";
-const MAIN_URL = "http://10.0.2.2"; // TODO: move to config
+import { get_language } from "../config/storage";
+import { Loader } from "../config/Loader/Loader";
+
+const MAIN_URL_IOS = "http://10.0.2.2"; // TODO: move to config
+const MAIN_URL_ANDROID = "http://10.0.2.2";
+const URL = Platform === "IOS" ? MAIN_URL_IOS : MAIN_URL_ANDROID;
 
 export const HomeScreen = ({ navigation }) => {
   const products = useSelector(state => state.products);
 
-  const [categories, setCategories] = useState();
+  const [categories, setCategories] = useState([]);
+  const [language, setLanguage] = useState("uk");
+  console.log('EEElanguage', language)
+  const [loader, setLoader] = useState(false);
   const dispatch = useDispatch();
-  // const { t } = useTranslation();
 
   useEffect(() => {
-    axios.post(MAIN_URL + "/pastille")
+    const fetchDataLang = async () => {
+      const currentLang = await get_language();
+      setLanguage(currentLang);
+    };
+    fetchDataLang();
+  }, []);
+
+  useEffect(() => {
+    setLoader(true);
+    axios.post(URL + "/pastille", {
+      language: language,
+    })
       .then(res => {
         const data = res.data;
+        console.log("WWWdata", data);
         dispatch(getProducts(data));
+        if (data.length > 0) {
+          setTimeout(() => {
+            setLoader(false);
+          }, 1000);
+        }
         setCategories(products);
       }).catch(error => error);
-  }, [dispatch]);
+  }, [language]);
 
   // const getNickname = () => {
   //   AsyncStorage.getItem(STORAGE_KEY)
@@ -39,14 +63,15 @@ export const HomeScreen = ({ navigation }) => {
   return (
     // <NativeBaseProvider>
     <SafeAreaView style={styles.container}>
-      <FlatList
-        data={products}
-        // data={t('home.data', { returnObjects: true })}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => {
-          return <MainProductList item={item} />;
-        }}
-      />
+      {loader ? <Loader loader={loader} /> :
+        <FlatList
+          data={products}
+          // data={t('home.data', { returnObjects: true })}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => {
+            return <MainProductList item={item} />;
+          }}
+        />}
     </SafeAreaView>
     // </NativeBaseProvider>
   );

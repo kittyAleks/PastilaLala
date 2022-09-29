@@ -9,42 +9,18 @@
     "buttonBottomSetting": "Settings",
     "buttonBottomBasket": "Basket"
   },
-  "home": {
-    "data": [
-      {
-        "id": 1,
-        "name": "Pastila apple",
-        "description": "Pasta made from natural ingredients",
-        "price": 200
-      },
-      {
-        "id": 2,
-        "name": "Pastila strawberry",
-        "description": "Pasta made from natural ingredients",
-        "price": 200
-      },
-      {
-        "id": 3,
-        "name": "Pastila raspberry",
-        "description": "Pasta made from natural ingredients",
-        "price": 200
-      },
-      {
-        "id": 4,
-        "name": "Item1",
-        "description": "",
-        "price": 200
-      },
-      {
-        "id": 5,
-        "name": "Item1",
-        "description": ""
-      },
-      {
-        "id": 6,
-        "name": "Item1",
-        "description": ""
-      }
-    ]
+  "loginRegButton" : {
+    "login": "Login",
+    "signUp": "Sign Up",
+    "welcome": "Welcome"
+  },
+  "loginRegScreen": {
+    "welcomeBack": "Welcome Back",
+    "loginText": "Login in with your account",
+    "nickName": "Nickname",
+    "email": "email",
+    "password": "password",
+    "createAccount": "Create account"
   }
+
 }

@@ -8,7 +8,7 @@ import Entypo from "react-native-vector-icons/Entypo";
 import {useTranslation} from "react-i18next";
 
 export const CartProductList = ({ item, totalAmount }) => {
-  // const {t} = useTranslation()
+  const {t} = useTranslation()
   const dispatch = useDispatch()
   const deleteProduct = () => {
     dispatch(removeProduct(item))
@@ -21,7 +21,7 @@ export const CartProductList = ({ item, totalAmount }) => {
                source={{ uri: "https://www.recept.ua/files/uploads/rec_img/pastila-v-suschilke.jpg" }} />
         <View style={styles.textContainer}>
           <Text style={{ fontWeight: "600" }}>{item.name}</Text>
-          {/*<Text style={{ color: mainColors.price, fontWeight: "600" }}>{item.price} {t('currency')}</Text>*/}
+          <Text style={{ color: mainColors.price, fontWeight: "600" }}>{item.price} {t('currency')}</Text>
         </View>
         <View style={styles.buttonContainer}>
           <Entypo onPress={deleteProduct} name="circle-with-cross" style={{paddingHorizontal: 20}}

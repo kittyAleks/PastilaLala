@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useTransition } from "react";
 import {
   View,
   StyleSheet,
@@ -6,11 +6,13 @@ import {
   useColorScheme,
   Text, Image,
 } from "react-native";
+import { useTranslation } from "react-i18next";
 import { Button } from "react-native-elements";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import splash_img from "../assets/splash_img.png";
 
 export const SplashScreen = ({ navigation }) => {
+  const {t} = useTranslation()
   useEffect(() => {
     getNickname();
   }, []);
@@ -34,20 +36,20 @@ export const SplashScreen = ({ navigation }) => {
       {/*</ImageBackground>*/}
       <ScrollView style={styles.buttonGroupStyle}>
         <View style={styles.centerLogoText}>
-          <Text style={styles.title}>Welcome</Text>
+          <Text style={styles.title}>{t("loginRegButton.welcome")}</Text>
           <View>
             <Image source={splash_img} style={{width: 80, height: 80, }}/>
           </View>
 
         </View>
         <Button
-          title="LOGIN"
+          title={t("loginRegButton.login")}
           onPress={() => navigation.navigate("SignIn")}
           buttonStyle={{ ...styles.button, ...styles.buttonSignIn }}
           titleStyle={styles.titleSignIn}
         />
         <Button
-          title="SIGN UP"
+          title={t("loginRegButton.signUp")}
           onPress={() => navigation.navigate("SignUp")}
           buttonStyle={{ ...styles.button, ...styles.buttonSignUp }}
           titleStyle={styles.titleSignUp}

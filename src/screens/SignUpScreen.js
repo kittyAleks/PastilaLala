@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState, useTransition } from "react";
 import {
   View,
   Text,
@@ -15,12 +15,14 @@ import axios from "axios";
 import {useDispatch} from "react-redux";
 import {saveSignUpTypeScreen} from "../store/actions";
 import { platforms } from "react-native/react-native.config";
+import { useTranslation } from "react-i18next";
 
-const MAIN_URL_ANDROID = 'http://10.0.2.2'; // TODO: move to config
-const MAIN_URL_IOS = 'http://localhost';
+const MAIN_URL_IOS = 'http://10.0.2.2'; // TODO: move to config
+const MAIN_URL_ANDROID = 'http://10.0.2.2';
 const URL = Platform === 'IOS' ? MAIN_URL_IOS : MAIN_URL_ANDROID
 
 export const SignUpScreen = ({ navigation }) => {
+  const {t} = useTranslation()
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => <HeaderButtons>
@@ -82,9 +84,9 @@ export const SignUpScreen = ({ navigation }) => {
         <View
           style={styles.center}
         >
-          <Text style={styles.title}>Welcome Back</Text>
+          <Text style={styles.title}>{t("loginRegScreen.welcomeBack")}</Text>
           <Text style={{ ...styles.title, ...styles.info }}>
-            Create account
+            {t("loginRegScreen.createAccount")}
           </Text>
         </View>
 
@@ -92,25 +94,25 @@ export const SignUpScreen = ({ navigation }) => {
           style={styles.input}
           onChangeText={onChangeNickname}
           value={dataForm.nickName}
-          placeholder="Nickname"
+          placeholder={t("loginRegScreen.nickName")}
           keyboardType="numeric"
         />
         <TextInput
           style={styles.input}
           onChangeText={onChangeEmail}
           value={dataForm.email}
-          placeholder="email"
+          placeholder={t("loginRegScreen.email")}
           keyboardType="numeric"
         />
         <TextInput
           style={styles.input}
           onChangeText={onChangePassword}
           value={dataForm.password}
-          placeholder="password"
+          placeholder={t("loginRegScreen.password")}
           keyboardType="numeric"
         />
         <Button
-          title="SIGN UP"
+          title={t("loginRegButton.signUp")}
           onPress={handleSignUp}
           buttonStyle={{ ...styles.button, ...styles.buttonSignUp }}
           titleStyle={styles.titleSignUp}

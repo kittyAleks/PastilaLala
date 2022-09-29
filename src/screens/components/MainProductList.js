@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import {useTranslation} from "react-i18next";
+import {useTranslation} from "react-i18next";
 import { View, StyleSheet, Text, Platform, TouchableOpacity, Image } from "react-native";
 import { mainColors } from "../../assets/colors";
 import { Button } from "react-native-elements";
@@ -9,7 +9,7 @@ import { addToCart } from "../../store/actions";
 export const MainProductList = ({ item }) => {
   console.log('WWWitem', item)
   // const productsCart = useSelector(state => state.cart)
-  // const {t} = useTranslation()
+  const {t} = useTranslation()
 
   const dispatch = useDispatch();
   const handleAddToCart = () => {
@@ -25,13 +25,12 @@ export const MainProductList = ({ item }) => {
             {`(${item.weight ? item.weight : 'Вес неизвестен '}г)`}</Text>
           <Text style={{ color: mainColors.price, fontWeight: "600" }}>{item.price ? item.price :
             'Стоимость уже готовится'}
-            {/*{t('currency')}*/}
+            {' '}{t('currency')}
           </Text>
         </View>
         <View style={styles.buttonContainer}>
           <Button
-            // title={t("addButton")}
-            title='Добавить'
+            title={t("addButton")}
             buttonStyle={{ ...styles.button, ...styles.buttonBasket }}
             titleStyle={styles.titleBasket}
             onPress={handleAddToCart}

@@ -26,7 +26,7 @@ export const BasketScreen = ({navigation}) => {
 
   const productsCart = useSelector(state => state.cart);
   const {width} = useWindowDimensions();
-  // const {t} = useTranslation()
+  const {t} = useTranslation()
 
   const [totalAmount, setTotalAmount] = useState(0);
 
@@ -78,13 +78,11 @@ export const BasketScreen = ({navigation}) => {
       </SafeAreaView>
       <View style={styles.priceContainer}>
         <View>
-          <Text style={{fontWeight: "600", color: 'gray', fontSize: 12}}>totalText:</Text>
-          <Text style={{fontWeight: "500", fontSize: 18}}>{totalAmount} currency</Text>
-          {/*<Text style={{fontWeight: "600", color: 'gray', fontSize: 12}}>{t('totalText')}:</Text>*/}
-          {/*<Text style={{fontWeight: "500", fontSize: 18}}>{totalAmount} {t('currency')}</Text>*/}
+          <Text style={{fontWeight: "600", color: 'gray', fontSize: 12}}>{t('totalText')}:</Text>
+          <Text style={{fontWeight: "500", fontSize: 18}}>{totalAmount} {t('currency')}</Text>
         </View>
         <Button
-          // title={t("buttonPay")}
+          title={t("buttonPay")}
           buttonStyle={{...styles.button, ...styles.buttonPay}}
           // titleStyle={styles.titlePay}
         />

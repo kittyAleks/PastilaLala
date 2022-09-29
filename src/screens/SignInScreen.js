@@ -7,11 +7,14 @@ import axios from "axios";
 import {set_token} from "../config/storage";
 import {useDispatch} from "react-redux";
 import {TYPE_SCREEN} from "../store/constans";
+import { useTranslation } from "react-i18next";
 
-const MAIN_URL_ANDROID = 'http://10.0.2.2'; // TODO: move to config
-const MAIN_URL_IOS = 'http://localhost';
+const MAIN_URL_IOS = 'http://10.0.2.2'; // TODO: move to config
+const MAIN_URL_ANDROID = 'http://10.0.2.2';
 const URL = Platform === 'IOS' ? MAIN_URL_IOS : MAIN_URL_ANDROID
 export const SignInScreen = ({ navigation }) => {
+  const {t} = useTranslation()
+
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => <HeaderButtons>
@@ -100,9 +103,9 @@ export const SignInScreen = ({ navigation }) => {
     }}>
       <ScrollView style={styles.mainTextStyle}>
         <View style={styles.center}>
-          <Text style={styles.title}>Welcome Back</Text>
+          <Text style={styles.title}>{t("loginRegScreen.welcomeBack")}</Text>
           <Text style={{ ...styles.title, ...styles.info }}>
-            Log in with your account
+            {t("loginRegScreen.loginText")}
           </Text>
         </View>
 
@@ -110,25 +113,25 @@ export const SignInScreen = ({ navigation }) => {
           style={styles.input}
           onChangeText={onChangeNickname}
           value={data.nickName}
-          placeholder="Nickname"
+          placeholder={t("loginRegScreen.nickName")}
           keyboardType="numeric"
         />
         <TextInput
           style={styles.input}
           onChangeText={onChangeEmail}
           value={data.email}
-          placeholder="email"
+          placeholder={t("loginRegScreen.email")}
           keyboardType="numeric"
         />
         <TextInput
           style={styles.input}
           onChangeText={onChangePassword}
           value={data.password}
-          placeholder="password"
+          placeholder={t("loginRegScreen.password")}
           keyboardType="numeric"
         />
         <Button
-          title="LOGIN"
+          title={t("loginRegButton.login")}
           onPress={handleSignIn}
           buttonStyle={{ ...styles.button, ...styles.buttonSignUp }}
           titleStyle={styles.titleSignUp}

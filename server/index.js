@@ -52,7 +52,6 @@ app.use(morgan("dev"));
 
 app.post("/signup", (req, res) => {
   const { nickname, email, password } = req.body;
-  console.log('DDDsignup', res)
 
   let salt = bcrypt.genSaltSync(10);
   let hashPassword = bcrypt.hashSync(password, salt);
@@ -67,8 +66,7 @@ app.post("/signup", (req, res) => {
   });
 });
 
-const tokenKey = '1a2b-3c4d-5e6f-7g8h'
-console.log('WWWtokenKey', tokenKey)
+const tokenKey = "1a2b-3c4d-5e6f-7g8h";
 app.post("/signin", (req, res) => {
   const { nickname, email, password } = req.body;
 
@@ -81,9 +79,9 @@ app.post("/signin", (req, res) => {
     const passResult = result.find(user => (user.email === email));
     try {
       if (bcrypt.compareSync(password, passResult.password)) {
-        const accessToken = jwt.sign({ nickname}, tokenKey);
+        const accessToken = jwt.sign({ nickname }, tokenKey);
         // const accessToken = jwt.sign({ nickname}, process.env.ACCESS_SECRET_TOKEN);
-        console.log('WWaccessToken',accessToken)
+        console.log("WWaccessToken", accessToken);
         res.status(200).json({ passResult, accessToken });
       } else {
         console.log("Not allowed");
@@ -95,9 +93,10 @@ app.post("/signin", (req, res) => {
   });
 });
 
-// categories_pastille
+// categories_pastille_lng
 app.post("/pastille", (req, res) => {
-  const sql = "SELECT * FROM pastille_categories";
+  let { language } = req.body;
+  const sql = `SELECT * FROM pastille_categories_lng WHERE language_code="${language}"`;
   db.query(sql, (err, result) => {
     try {
       res.send(result);
@@ -106,17 +105,6 @@ app.post("/pastille", (req, res) => {
     }
   });
 });
-app.post("/language", (req, res) => {
-  const sql = "SELECT * FROM languages";
-  db.query(sql, (err, result) => {
-    console.log('EEEresult', result)
-    try {
-      res.send(result)
-    } catch {
-      console.log('Language ERROR', err);
-    }
-  })
-})
 
 
 app.listen(port, () => {
