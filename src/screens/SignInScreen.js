@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { HeaderButtons } from "react-navigation-header-buttons";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -9,9 +9,9 @@ import {useDispatch} from "react-redux";
 import {TYPE_SCREEN} from "../store/constans";
 import { useTranslation } from "react-i18next";
 
-const MAIN_URL_IOS = 'http://10.0.2.2'; // TODO: move to config
-const MAIN_URL_ANDROID = 'http://10.0.2.2';
-const URL = Platform === 'IOS' ? MAIN_URL_IOS : MAIN_URL_ANDROID
+const MAIN_URL_IOS = 'http://localhost'; // TODO: move to config
+// const MAIN_URL_ANDROID = 'http://10.0.2.2';
+// const URL = Platform === 'IOS' ? MAIN_URL_IOS : MAIN_URL_ANDROID
 export const SignInScreen = ({ navigation }) => {
   const {t} = useTranslation()
 
@@ -132,7 +132,8 @@ export const SignInScreen = ({ navigation }) => {
         />
         <Button
           title={t("loginRegButton.login")}
-          onPress={handleSignIn}
+          onPress={() => navigation.navigate('TestScreen')}
+          // onPress={handleSignIn}
           buttonStyle={{ ...styles.button, ...styles.buttonSignUp }}
           titleStyle={styles.titleSignUp}
         />

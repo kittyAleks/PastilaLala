@@ -39,6 +39,7 @@ export const createChannel = () => {
 }
 
 const getPushData = (message) => {
+  console.log('getPushData_message', message)
   PushNotification.localNotification({
     channelId: message.messageId,
     message: message.notification.body,
@@ -53,6 +54,8 @@ const getBackgroundPushData = (background_message) => {
     channelId: background_message.messageId,
     message: background_message.notification.body,
     title: background_message.notification.title,
+    largeIcon: "ic_notification_round",
+    smallIcon: "ic_notification"
   })
 }
 
@@ -65,7 +68,7 @@ export const notificationListener = () => {
     );
   });
   messaging().setBackgroundMessageHandler(getBackgroundPushData);
-  messaging().onMessage(getPushData);
+  // messaging().onMessage(getPushData);
 
   messaging()
     .getInitialNotification()

@@ -17,9 +17,9 @@ import {saveSignUpTypeScreen} from "../store/actions";
 import { platforms } from "react-native/react-native.config";
 import { useTranslation } from "react-i18next";
 
-const MAIN_URL_IOS = 'http://10.0.2.2'; // TODO: move to config
-const MAIN_URL_ANDROID = 'http://10.0.2.2';
-const URL = Platform === 'IOS' ? MAIN_URL_IOS : MAIN_URL_ANDROID
+const MAIN_URL_IOS = 'http://localhost'; // TODO: move to config
+// const MAIN_URL_ANDROID = 'http://10.0.2.2';
+// const URL = Platform === 'IOS' ? MAIN_URL_IOS : MAIN_URL_ANDROID
 
 export const SignUpScreen = ({ navigation }) => {
   const {t} = useTranslation()
@@ -61,7 +61,7 @@ export const SignUpScreen = ({ navigation }) => {
 
   const handleSignUp = async () => {
     try {
-      const res = await axios.post(URL + '/signup', {
+      const res = await axios.post(MAIN_URL_IOS + '/signup', {
         nickname: dataForm.nickName,
         email: dataForm.email,
         password: dataForm.password,

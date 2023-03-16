@@ -38,6 +38,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PastilaLala/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PastilaLala/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PastilaLala/main.m; sourceTree = "<group>"; };
+		1F3D0E9E29AFAD83008D8837 /* PastilaLala.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PastilaLala.entitlements; path = PastilaLala/PastilaLala.entitlements; sourceTree = "<group>"; };
 		1FD5368F28DCB82900B80C23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-PastilaLala.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PastilaLala.debug.xcconfig"; path = "Target Support Files/Pods-PastilaLala/Pods-PastilaLala.debug.xcconfig"; sourceTree = "<group>"; };
 		549105A37C53F3A1018E677D /* Pods_PastilaLala_PastilaLalaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PastilaLala_PastilaLalaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +89,7 @@
 		13B07FAE1A68108700A75B9A /* PastilaLala */ = {
 			isa = PBXGroup;
 			children = (
+				1F3D0E9E29AFAD83008D8837 /* PastilaLala.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -467,6 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PastilaLala/PastilaLala.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PastilaLala/Info.plist;
@@ -493,6 +496,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PastilaLala/PastilaLala.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = PastilaLala/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

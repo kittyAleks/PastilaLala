@@ -3,13 +3,17 @@ import {HeaderButtons} from "react-navigation-header-buttons";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import {useTranslation} from "react-i18next";
+import i18next, {changeLanguage} from "i18next";
 
 import {HomeScreen} from "../screens/HomeScreen";
 import {SettingsScreen} from "../screens/SettingsScreen";
-import {CartScreen} from "../screens/CartScreen";
 import {SplashScreen} from "../screens/SplashScreen";
 import {SignInScreen} from "../screens/SignInScreen";
 import {SignUpScreen} from "../screens/SignUpScreen";
+import { PaymentScreen } from "../screens/PaymentScreen";
+import { TestScreen } from "../screens/TestScreen";
+
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import {mainColors} from "../assets/colors";
 import {BasketScreen} from "../screens/BasketScreen";
@@ -17,8 +21,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import flag_en from "../assets/flag_en.png";
 import flag_ukraine from "../assets/flag_ukraine.png";
-import {useTranslation} from "react-i18next";
-import i18next, {changeLanguage} from "i18next";
+
 import {get_language, save_language} from "../config/storage";
 
 const defaultOptions = {
@@ -83,6 +86,11 @@ export const RootStack = () => {
       }}
                     name="FoodMarket"
                     component={SplashScreen}/>
+      {/*<Stack.Screen options={{*/}
+      {/*  ...defaultOptions,*/}
+      {/*}}*/}
+      {/*              name="TestScreen"*/}
+      {/*              component={TestScreen}/>*/}
 
       <Stack.Screen
         name="SignIn"
@@ -106,7 +114,6 @@ export const RootStack = () => {
         }}
       />
 
-
       <Stack.Screen
         name="SettingsScreen"
         component={SettingsScreen}
@@ -115,6 +122,15 @@ export const RootStack = () => {
           headerTitle: "",
           ...defaultOptions,
           // headerBackground: () => <LinearGradient colors={['#F27527', '#F69493']} style={{height: '100%'}}/>,
+        }}
+      />
+      <Stack.Screen
+        name="PaymentScreen"
+        component={PaymentScreen}
+        options={{
+          headerShown: false,
+          headerTitle: "",
+          ...defaultOptions,
         }}
       />
     </Stack.Navigator>

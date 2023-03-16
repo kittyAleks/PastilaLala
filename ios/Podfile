@@ -28,6 +28,7 @@ target 'PastilaLala' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
   use_frameworks! :linkage => :static
+  $RNFirebaseAsStaticFramework = true
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 

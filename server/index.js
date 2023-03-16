@@ -1,10 +1,15 @@
+require("dotenv").config();
 const express = require("express");
+const Stripe = require("stripe");
+const stripe = Stripe(process.env.STRIPE_SK);
+console.log("EEEstripe", stripe);
+
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const mysql = require("mysql2");
 const morgan = require("morgan");
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
+
 
 // const { secret } = require("./config");
 
@@ -49,6 +54,40 @@ app.use(morgan("dev"));
 //   }
 //   res.json({ token: 'xxx' })
 // })
+
+app.post("/pay", async (req, res) => {
+  const { amount, currency, payment_method } = req.body;
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(amount *100) ,
+      currency: currency,
+      payment_method_types: payment_method,
+    });
+
+    const clientSecret = paymentIntent.client_secret;
+    console.log("WWWclientSecret", clientSecret);
+    res.status(200).json({ message: "Payment initiated", clientSecret });
+  } catch (err) {
+      res.status(500).json({ message: err });
+      console.log("ERROR_PAY");
+  }
+
+  // try {
+  //   const paymentIntent = stripe.paymentIntents.create({
+  //     amount: amount,
+  //     currency: currency,
+  //     payment_method: payment_method,
+  //   });
+  //   console.log("WWWpaymentIntent", paymentIntent);
+  //
+  //   const clientSecret = paymentIntent.client_secret;
+  //
+  //   res.status(200).json({ message: "Payment initiated", clientSecret });
+  // } catch {
+  //   res.status(500).json({ message: "Server ERROR" });
+  //   console.log("ERROR_PAY");
+  // }
+});
 
 app.post("/signup", (req, res) => {
   const { nickname, email, password } = req.body;

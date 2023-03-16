@@ -2,17 +2,20 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {NavigationContainer} from "@react-navigation/native";
 // import messaging from '@react-native-firebase/messaging';
-
-import { get_notific_token, get_token, save_notific_token } from "./src/config/storage";
+import { StripeProvider } from '@stripe/stripe-react-native';
+import { get_token } from "./src/config/storage";
 import {AuthStack} from "./src/navigation/AuthStack";
 import {TYPE_SCREEN} from "./src/store/constans";
 import {RootStack} from "./src/navigation/RootStack";
 import {changeLanguage} from "i18next";
 import { createChannel, notificationListener, requestUserPermission } from "./src/config/notification";
+import messaging from "@react-native-firebase/messaging";
 
 export const Main = () => {
   const _default = useSelector((state) => state.type_screen);
-  const [typeScreen, setTypeScreen] = useState('login')
+  const [typeScreen, setTypeScreen] = useState('login');
+  const [publishableKey, setPublishableKey] = useState('');
+
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -28,6 +31,7 @@ export const Main = () => {
   useEffect(() => {
     requestUserPermission();
     notificationListener();
+    // messaging().onMessage(getPushData);
     createChannel();
   }, []);
 
@@ -47,7 +51,9 @@ export const Main = () => {
   return (
     <>
       <NavigationContainer>
-        {typeScreen !== 'login' ?
+        {/*TODO: replace on typeScreen !== 'login'*/}
+        {typeScreen === 'login' ?
+        // {typeScreen !== 'login' ?
           <RootStack/>:
           <AuthStack/>
         }
